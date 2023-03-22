@@ -55,6 +55,7 @@ function snakeMove(axis, positionModifier) {
       ? (snakePositions[0][axis] += 1)
       : (snakePositions[0][axis] -= 1);
 
+   console.log(snakePositions);
    checkIfCollision();
 
    if (
@@ -91,11 +92,12 @@ function checkIfCollision() {
    for (let i = 1; i < snakePositions.length; i++) {
       if (
          (checkX === snakePositions[i].x && checkY === snakePositions[i].y) ||
-         snakePositions[0].x < 0 ||
-         snakePositions[0].y < 0 ||
+         snakePositions[0].x < 1 ||
+         snakePositions[0].y < 1 ||
          snakePositions[0].x > 25 ||
          snakePositions[0].y > 25
       ) {
+         // debugger;
          clearInterval(intervalId);
          const $gameOver = document.getElementById("game-over");
 
