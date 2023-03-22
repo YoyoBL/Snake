@@ -55,7 +55,6 @@ function snakeMove(axis, positionModifier) {
       ? (snakePositions[0][axis] += 1)
       : (snakePositions[0][axis] -= 1);
 
-   console.log(snakePositions);
    checkIfCollision();
 
    if (
@@ -166,6 +165,4 @@ function bodyPartGenerator() {
 
    $activeBodyPart = document.querySelectorAll(".active-body-part");
    $activeBodyPart = Array.from($activeBodyPart);
-
-   // console.log($BodyPart);
 }
