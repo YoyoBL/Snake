@@ -78,7 +78,6 @@ function snakeMove(axis, positionModifier) {
    }
 
    snakePositions.pop();
-   console.log(snakePositions);
 }
 
 function checkIfCollision() {
@@ -105,7 +104,6 @@ function checkIfCollision() {
 window.addEventListener("keydown", function (event) {
    if (currentDirection !== event.code) {
       moveForward(event.code);
-      console.log(event.code);
    }
 });
 
