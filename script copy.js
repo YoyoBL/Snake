@@ -9,6 +9,8 @@ let intervalId = null;
 let currentDirection = "right";
 let bodyPartHTMLcode = "";
 let pause = null;
+let speed = 300;
+let score = 0;
 
 let bodyPartPosition = {};
 
@@ -24,7 +26,7 @@ function interval(axis, boolean) {
    snakeMove(axis, boolean);
    intervalId = setInterval(function () {
       snakeMove(axis, boolean);
-   }, 200);
+   }, speed);
 }
 
 //Random fn
@@ -42,7 +44,7 @@ function startGame() {
 
    intervalId = setInterval(function () {
       snakeMove("x", true);
-   }, 200);
+   }, speed);
 }
 
 // Snake move fn
@@ -61,6 +63,8 @@ function snakeMove(axis, positionModifier) {
    ) {
       $BodyPart[0].classList.remove("body-part");
       $BodyPart[0].classList.add("active-body-part");
+
+      score += 10;
 
       snakePositions.unshift({ ...snakePositions[0] });
 
@@ -95,6 +99,7 @@ function checkIfCollision() {
          clearInterval(intervalId);
          const $gameOver = document.getElementById("game-over");
 
+         $gameOver.innerHTML = `GAME OVER!<br>You're score: ${score}`;
          $gameOver.classList.remove("d-none");
          setTimeout(() => window.location.reload(), 1500);
       }
@@ -138,6 +143,7 @@ function moveForward(direction) {
 }
 
 function bodyPartGenerator() {
+   speed > 100 ? (speed -= 5) : (speed -= 0);
    let randomY = getRandomInt(1, 26);
    let randomX = getRandomInt(1, 26);
 
