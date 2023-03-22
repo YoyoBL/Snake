@@ -21,49 +21,84 @@
    </head>
 
    <body>
-      <div class="container h-100">
-         <div class="row play-area h-100">
-            <button onclick="startGame()" class="btn btn-danger play-btn">
-               Play!
-            </button>
-            <div class="active-body-part" style="grid-area: 25/25"></div>
-            <!-- <div class="active-body-part"></div>
-            <div class="active-body-part"></div>
-            <div class="active-body-part"></div> -->
+      <div class="container ratio ratio-1x1">
+         <div class="row">
+            <div class="play-area h-100">
+               <div
+                  class="bg-danger d-flex justify-content-center align-items-center d-none"
+                  style="z-index: 5"
+                  id="game-over"
+               >
+                  <p class="fs-3">GAME OVER</p>
+               </div>
+               <button
+                  onclick="startGame()"
+                  class="btn btn-dark rounded-0 play-btn"
+               >
+                  Play!
+               </button>
+               <div class="active-body-part" style="grid-area: 12/12"></div>
+               <!-- <div class="active-body-part"></div>
+               <div class="active-body-part"></div>
+               <div class="active-body-part"></div> -->
+            </div>
          </div>
       </div>
    </body>
 
    <style>
       body {
+         padding-top: 30px;
          box-sizing: border-box;
          width: 100vw;
          height: 100vh;
+         background-color: #5a5a5a;
+      }
+
+      .row {
+         left: auto;
+         padding: 10px;
+      }
+
+      .container {
+         max-width: 550px;
       }
 
       .play-btn {
-         grid-row: 23 / 27;
-         grid-column: 20 / 30;
-         position: relative;
+         grid-row: 10 / 15;
+         grid-column: 8 / 20;
+         /* position: relative; */
          z-index: 1;
       }
 
+      #game-over {
+         /* position: absolute; */
+         grid-row: 1 / 26;
+         grid-column: 1 / 27;
+      }
+
       .play-area {
+         padding: 0%;
          display: grid;
-         grid-template-rows: repeat(50, 1fr);
-         grid-template-columns: repeat(50, 1fr);
+         grid-template-rows: repeat(25, 1fr);
+         grid-template-columns: repeat(25, 1fr);
+         font-family: monospace;
+         border: #464646 solid 25px;
+         background-color: #ecefb3;
+         -webkit-box-shadow: inset 0px 0px 40px 4px #f0ea7b;
+         box-shadow: inset 0px 0px 40px 4px #f0ea7b;
       }
 
       .active-body-part {
          background-color: #484848;
-         height: 100%;
-         width: 100%;
+         border: solid 1px #ecefb3;
+         padding: 0px;
       }
 
       .body-part {
          background-color: #484848;
-         height: 100%;
-         width: 100%;
+         border: solid 1px #ecefb3;
+         padding: 0px;
       }
    </style>
 </html>
